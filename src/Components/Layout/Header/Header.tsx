@@ -11,6 +11,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
+import clsx from "clsx";
 import React from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,11 +71,11 @@ const useStyles = makeStyles((theme: Theme) =>
     })
 );
 
-export default function SearchAppBar() {
+const Header = (): JSX.Element => {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+        <div className={clsx("Header", classes.root)}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton
@@ -108,4 +109,6 @@ export default function SearchAppBar() {
             </AppBar>
         </div>
     );
-}
+};
+
+export default Header;

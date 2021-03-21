@@ -22,7 +22,14 @@
     "sourceMap": true,
     "allowJs": true,
     "noImplicitAny": false,
-    "baseUrl": ".",
+    "baseUrl": "./src",
+    "paths": {
+      "@Common/*": ["Components/Common/*"],
+      "@Layout/*": ["Components/Layout/*"],
+      "@Pages/*": ["Pages/*"],
+      "@Store/*": ["store/*"],
+      "@Interfaces/*": ["Interfaces/*"]
+    },
     "typeRoots": [
       "./src/declarations"
     ],
@@ -38,7 +45,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "node_modules/hash.js/lib/hash.d.ts"
   ],
   "exclude": [
     "dist",

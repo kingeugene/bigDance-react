@@ -1,13 +1,23 @@
+import "./style/index.scss";
+
+import { Provider } from "mobx-react";
 import React from "react";
+import { Route, Router, Switch } from "react-router";
 
-import Header from "./Components/Layout/Header/Header";
+import WelcomePage from "./Pages/WelcomePage/WelcomePage";
+import RootStore, { history } from "./store/RootStore";
 
-function App() {
-    return (
-        <div className="App">
-            <Header />
-        </div>
-    );
-}
+const store = {
+    rootStore: RootStore,
+};
 
+const App = (): JSX.Element => (
+    <Provider {...store}>
+        <Router history={history}>
+            <Switch>
+                <Route path="/" component={WelcomePage} />
+            </Switch>
+        </Router>
+    </Provider>
+);
 export default App;

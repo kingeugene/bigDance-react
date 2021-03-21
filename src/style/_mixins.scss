@@ -1,0 +1,58 @@
+/*Mixins*/
+@mixin bp($point) {
+    @if $point == s {
+        @media (min-width: $w-mobile) {
+            @content;
+        }
+    } @else if $point == m {
+        @media (min-width: $w-tablet) {
+            @content;
+        }
+    } @else if $point == l {
+        @media (min-width: $w-desktop) {
+            @content;
+        }
+    } @else if $point == md {
+        @media (min-width: $w-middle-desktop) {
+            @content;
+        }
+    } @else if $point == xl {
+        @media (min-width: $w-large-desktop) {
+            @content;
+        }
+    } @else if $point {
+        // allows custom breakpoints
+        @media (min-width: $point) {
+            @content;
+        }
+    }
+}
+
+@mixin font($size, $color: false, $weight: false, $important: false) {
+    font-size: #{$size}px #{if($important, unquote(" !important"), "")};
+
+    @if $color != false {
+        @include var(color, $color, $important);
+    }
+
+    @if $weight != false {
+        font-weight: $weight #{if($important, unquote(" !important"), "")};
+    }
+}
+
+@mixin Light($color, $size: $defaultFontSize, $important: false) {
+    @include font($size, $color, 300, $important);
+}
+
+@mixin Reg($color, $size: $defaultFontSize, $important: false) {
+    @include font($size, $color, 400, $important);
+}
+
+@mixin Semibold($color, $size: $defaultFontSize, $important: false) {
+    @include font($size, $color, 500, $important);
+}
+
+@mixin Bold($color, $size: $defaultFontSize, $important: false) {
+    @include font($size, $color, 700, $important);
+}
+
