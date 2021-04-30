@@ -1,25 +1,10 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router";
+import { Redirect, Route, Switch } from "react-router-dom";
+import routes from "routes/routes";
 
-import { routes } from "./routes";
-
-export const getContentRoutes = function () {
-    return (
-        <Switch>
-            {Object.values(routes).map((route, i) =>
-                routes.meta!.requiresAuth ? (
-                    <PrivateRoute
-                        {...route}
-                        authed={window.LOGINED}
-                        redirectTo="/login"
-                        key={i}
-                    />
-                ) : (
-                    <BasicRoute {...route} key={i} />
-                )
-            )}
-        </Switch>
-    );
+const renderMergedProps = (Component: React.ComponentType, ...rest: any[]) => {
+    const allProps = Object.assign({}, ...rest);
+    return <Component {...allProps} />;
 };
 
 const BasicRoute = ({ component, ...rest }: any) => {
@@ -58,7 +43,21 @@ const PrivateRoute = ({
     );
 };
 
-const renderMergedProps = (Component: React.ComponentType, ...rest: any[]) => {
-    const allProps = Object.assign({}, ...rest);
-    return <Component {...allProps} />;
+export const getContentRoutes = (isLogined: boolean): JSX.Element => {
+    return (
+        <Switch>
+            {Object.values(routes).map((route, i) => {
+                return route.meta!.requiresAuth ? (
+                    <PrivateRoute
+                        {...route}
+                        authed={isLogined}
+                        redirectTo={routes.login.path}
+                        key={i}
+                    />
+                ) : (
+                    <BasicRoute {...route} key={i} />
+                );
+            })}
+        </Switch>
+    );
 };

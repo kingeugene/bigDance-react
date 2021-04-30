@@ -1,0 +1,76 @@
+@import "src/style/mixins";
+@import "src/style/variables";
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.item {
+    width: 400px;
+    margin: 0 30px;
+    box-shadow: 0 8px 45px rgba(0, 0, 0, .5);
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    position: relative;
+    @include Semibold($c-white, 20);
+}
+
+.setting {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    &Icon {
+        margin: 0 5px;
+        padding: 5px;
+        border: 1px solid;
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+    }
+}
+
+.bottom {
+    padding: 10px 20px;
+
+    &Item {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+    }
+}
+
+.label {
+    color: $c-grey;
+    margin-right: 5px;
+}
+
+.time {
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    margin: 0 10px;
+}
+
+.clock {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.start {
+    @include Semibold($c-green, 16);
+}
+
+.end {
+    @include Semibold($c-red, 16);
+}

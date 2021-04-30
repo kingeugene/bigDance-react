@@ -1,5 +1,3 @@
-import { FetchStatus, Hash } from "@Interfaces";
-
 export interface HookContext<TFields> {
     ctx: any;
     value: any;
@@ -7,7 +5,11 @@ export interface HookContext<TFields> {
     state: any;
 }
 export interface IFieldConfig<TFields> {
-    type: StringConstructor | NumberConstructor | BooleanConstructor | ObjectConstructor;
+    type:
+        | StringConstructor
+        | NumberConstructor
+        | BooleanConstructor
+        | ObjectConstructor;
     validators?: Validator[];
     interceptor?(params: HookContext<TFields>): any;
     hooks?: {
@@ -36,17 +38,19 @@ export interface ISubmitMeta {
     validateOnly?: string[];
 }
 
-export type FieldsHash<TFields> = { [K in keyof TFields]: IFieldConfig<TFields> };
+export type FieldsHash<TFields> = {
+    [K in keyof TFields]: IFieldConfig<TFields>;
+};
 
 export type ErrorsState = Hash<string[]>;
 
-export type FieldsState<TFields, K extends keyof TFields = keyof TFields> = Hash<TFields[K]>;
+export type FieldsState<
+    TFields,
+    K extends keyof TFields = keyof TFields
+> = Hash<TFields[K]>;
 
-export type DefaultValues = {[field: string]: any};
+export type DefaultValues = { [field: string]: any };
 
 export type FieldTypes = string | number | boolean | Record<string, unknown>;
 
-export type Validator = (
-    value,
-    fields: Hash<any>,
-) => void | string;
+export type Validator = (value, fields: Hash<any>) => void | string;

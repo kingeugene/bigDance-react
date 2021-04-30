@@ -1,23 +1,15 @@
-import "./style/index.scss";
+import "style/index.scss";
 
-import { Provider } from "mobx-react";
+import MainLayout from "Components/Layout/MainLayout/MainLayout";
+import { StoreProvider } from "Providers/RootStoreProvider";
 import React from "react";
-import { Route, Router, Switch } from "react-router";
-
-import WelcomePage from "./Pages/WelcomePage/WelcomePage";
-import RootStore, { history } from "./store/RootStore";
-
-const store = {
-    rootStore: RootStore,
-};
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = (): JSX.Element => (
-    <Provider {...store}>
-        <Router history={history}>
-            <Switch>
-                <Route path="/" component={WelcomePage} />
-            </Switch>
+    <StoreProvider>
+        <Router>
+            <MainLayout />
         </Router>
-    </Provider>
+    </StoreProvider>
 );
 export default App;

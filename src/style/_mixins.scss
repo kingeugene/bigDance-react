@@ -28,6 +28,14 @@
     }
 }
 
+@mixin var($property, $varName, $isImportant: false) {
+    #{$property}: #{$varName} #{if(
+        $isImportant,
+        unquote(" !important"),
+        ""
+    )};
+}
+
 @mixin font($size, $color: false, $weight: false, $important: false) {
     font-size: #{$size}px #{if($important, unquote(" !important"), "")};
 

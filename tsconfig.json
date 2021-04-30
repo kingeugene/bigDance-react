@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "ES5",
+    "experimentalDecorators": true,
     "module": "esnext",
     "skipLibCheck": true,
     "strict": true,
@@ -8,11 +9,10 @@
     "lib": [
       "es6",
       "es7",
-      "es2017",
+      "es2020",
       "dom"
     ],
     "moduleResolution": "node",
-    "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
     "strictPropertyInitialization": true,
@@ -22,7 +22,7 @@
     "sourceMap": true,
     "allowJs": true,
     "noImplicitAny": false,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "typeRoots": [
       "./src/declarations"
     ],
